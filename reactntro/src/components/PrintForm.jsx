@@ -10,6 +10,8 @@ export const PrintForm = () =>{
 
     const [page,setPage] = useState(1);
 
+    const[prevPage,setnextPage]= useState(false);
+
     useEffect(() =>{
         getTodo(page)
     },[page])
@@ -18,8 +20,27 @@ export const PrintForm = () =>{
         fetch(`http://localhost:5000/api/form?_page=${page}&_limit=3`)
           .then((d) => d.json())
           .then((res) => {
-              console.log(res);
+            
             setList(res);
+          });
+      };
+
+      useEffect(() => {
+        getTodoPage(page);
+      }, [page]);
+      
+      const getTodoPage = (page) => {
+        fetch(`http://localhost:5000/api/form`)
+          .then((d) => d.json())
+          .then((res) => {
+              var val = res.length;
+              var total = Math.ceil(val / 3);
+              if(page>=total){
+                setnextPage(true)
+              } else {
+                  setnextPage(false)
+              }
+
           });
       };
 
@@ -66,12 +87,13 @@ export const PrintForm = () =>{
         });
     };
 
+
     const handleSort = () => {
         var sortedlist = list.sort((a,b)=>b.salary-a.salary)
         setList(sortedlist);
         console.log(sortedlist);
     }
-
+  
     return(
         <>
         
@@ -101,8 +123,8 @@ export const PrintForm = () =>{
            handleDelete={handleDelete}
            />
         ))}
-        <button onClick={()=>setPage(page-1)}>prev</button>
-        <button onClick={()=>setPage(page+1)}>next</button>
+        <button disabled={page===0} onClick={()=>setPage(page-1)}>prev</button>
+        <button disabled={prevPage===true}  onClick={()=>setPage(page+1)}>next</button>
         </>
     )
 }
