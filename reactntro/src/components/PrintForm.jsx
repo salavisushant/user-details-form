@@ -8,14 +8,17 @@ import "../components/print.css";
 export const PrintForm = () =>{
     const [list,setList]=useState([]);
 
-    useEffect(() =>{
-        getTodo()
-    },[])
+    const [page,setPage] = useState(1);
 
-    const getTodo = () => {
-        fetch("http://localhost:5000/api/form")
+    useEffect(() =>{
+        getTodo(page)
+    },[page])
+
+    const getTodo = (page) => {
+        fetch(`http://localhost:5000/api/form?_page=${page}&_limit=3`)
           .then((d) => d.json())
           .then((res) => {
+              console.log(res);
             setList(res);
           });
       };
@@ -98,6 +101,8 @@ export const PrintForm = () =>{
            handleDelete={handleDelete}
            />
         ))}
+        <button onClick={()=>setPage(page-1)}>prev</button>
+        <button onClick={()=>setPage(page+1)}>next</button>
         </>
     )
 }

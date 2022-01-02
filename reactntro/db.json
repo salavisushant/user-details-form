@@ -8,6 +8,42 @@
       "salary": "100000",
       "department": "Placement team",
       "MaritalStatus": "Not Married"
+    },
+    {
+      "id": "7Mx8R_E",
+      "username": "Sushant",
+      "age": "23",
+      "address": "kolhapur",
+      "salary": "333",
+      "department": "HR",
+      "MaritalStatus": "Married"
+    },
+    {
+      "id": "P68UK9O",
+      "username": "Sushantqqqq",
+      "age": "23",
+      "address": "kolhapur",
+      "salary": "333",
+      "department": "HR",
+      "MaritalStatus": "Not Married"
+    },
+    {
+      "id": "tdSoKZ1",
+      "username": "Sushantqqqqwwww",
+      "age": "23",
+      "address": "kolhapur",
+      "salary": "333",
+      "department": "HR",
+      "MaritalStatus": "Not Married"
+    },
+    {
+      "id": "CWM7ZjO",
+      "username": "sdafddf",
+      "age": "23",
+      "address": "kolhapur",
+      "salary": "333",
+      "department": "HR",
+      "MaritalStatus": "Not Married"
     }
   ]
 }
